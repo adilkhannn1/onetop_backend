@@ -1,4 +1,4 @@
-package onetop.platform.model.dto;
+package onetop.platform.event.dto;
 import java.time.LocalDateTime;
 
 
@@ -12,7 +12,10 @@ public record EventDTO(
         Integer maxPerson,
         Integer currentPerson,
         LocalDateTime startDate,
-        EventType eventType
+        LocalDateTime endDate,
+        EventType eventType,
+        EventCity city,
+        String address
 ) {
 
 }

@@ -1,7 +1,7 @@
-package onetop.platform.mapper;
+package onetop.platform.event.mapper;
 
-import onetop.platform.model.dto.EventDTO;
-import onetop.platform.model.entity.EventEntity;
+import onetop.platform.event.dto.EventDTO;
+import onetop.platform.event.entity.EventEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -10,12 +10,12 @@ import java.util.List;
 public class EventMapper {
     public EventEntity toEntity(EventDTO eventDTO){
         return new EventEntity(eventDTO.name(), eventDTO.description(), eventDTO.eventStatus(), eventDTO.maxPerson(),
-                eventDTO.currentPerson(), eventDTO.startDate(), eventDTO.eventType());
+                eventDTO.currentPerson(), eventDTO.startDate(), eventDTO.endDate(), eventDTO.eventType(), eventDTO.city(), eventDTO.address());
     }
     public EventDTO toEventDTO(EventEntity eventEntity){
         return new EventDTO(eventEntity.getId(), eventEntity.getName(), eventEntity.getDescription(), eventEntity.getEventStatus(),
                 eventEntity.getMaxPerson(),
-                eventEntity.getCurrentPerson(), eventEntity.getStartDate(), eventEntity.getEventType());
+                eventEntity.getCurrentPerson(), eventEntity.getStartDate(), eventEntity.getEndDate(), eventEntity.getEventType(), eventEntity.getCity(), eventEntity.getStreet());
     }
     public List<EventDTO> toEventListDTO(List<EventEntity> eventEntityList){
         List<EventDTO> listOfEvenDTO = eventEntityList.stream().map(
@@ -27,7 +27,11 @@ public class EventMapper {
                         entity.getMaxPerson(),
                         entity.getCurrentPerson(),
                         entity.getStartDate(),
-                        entity.getEventType())).toList();
+                        entity.getEndDate(),
+                        entity.getEventType(),
+                        entity.getCity(),
+                        entity.getStreet()
+                        )).toList();
         return listOfEvenDTO;
     }
 

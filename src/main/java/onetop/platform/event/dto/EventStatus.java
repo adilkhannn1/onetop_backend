@@ -1,4 +1,4 @@
-package onetop.platform.model.dto;
+package onetop.platform.event.dto;
 
 public enum EventStatus {
     PENDING,
